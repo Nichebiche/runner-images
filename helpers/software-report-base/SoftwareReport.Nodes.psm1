@@ -25,7 +25,6 @@ class NodesFactory {
 }
 
 class HeaderNode: BaseNode {
-    [ValidateNotNullOrEmpty()]
     [String] $Title
     [Collections.Generic.List[BaseNode]] $Children
 
@@ -185,7 +184,6 @@ class ToolVersionNode: BaseToolNode {
 }
 
 class ToolVersionsListNode: BaseToolNode {
-    [ValidateNotNullOrEmpty()]
     [String[]] $Versions
 
     [Regex] $MajorVersionRegex
@@ -253,9 +251,7 @@ class ToolVersionsListNode: BaseToolNode {
 
 class TableNode: BaseNode {
     # It is easier to store the table as rendered lines because it will simplify finding differences in rows later
-    [ValidateNotNullOrEmpty()]
     [String] $Headers
-    [ValidateNotNullOrEmpty()]
     [String[]] $Rows
 
     TableNode([String] $Headers, [String[]] $Rows) {
@@ -388,7 +384,6 @@ class TableNode: BaseNode {
 }
 
 class NoteNode: BaseNode {
-    [ValidateNotNullOrEmpty()]
     [String] $Content
 
     NoteNode([String] $Content) {

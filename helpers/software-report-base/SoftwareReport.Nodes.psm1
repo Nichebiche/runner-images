@@ -87,7 +87,7 @@ class HeaderNode: BaseNode {
     [void] AddToolVersionsListInline([String] $ToolName, [String[]] $Version, [String] $MajorVersionRegex) {
         $this.AddNode([ToolVersionsListNode]::new($ToolName, $Version, $MajorVersionRegex, "Inline"))
     }
-     
+
     [void] AddTable([PSCustomObject[]] $Table) {
        $this.AddNode([TableNode]::FromObjectsArray($Table))
     }
@@ -157,7 +157,6 @@ class HeaderNode: BaseNode {
 }
 
 class ToolVersionNode: BaseToolNode {
-    [ValidateNotNullOrEmpty()]
     [String] $Version
 
     ToolVersionNode([String] $ToolName, [String] $Version): base($ToolName) {

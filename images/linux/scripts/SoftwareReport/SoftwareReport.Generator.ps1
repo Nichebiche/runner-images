@@ -217,10 +217,14 @@ $netCoreTools = $installedSoftware.AddHeader(".NET Tools")
 $netCoreTools.AddToolVersionsListInline(".NET Core SDK", $(Get-DotNetCoreSdkVersions), "^\d+\.\d+\.\d")
 $netCoreTools.AddNodes($(Get-DotnetTools))
 
+Write-Host "before dbs"
+
 $databasesTools = $installedSoftware.AddHeader("Databases")
+Write-Host "mongo"
 if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
     $databasesTools.AddToolVersion("MongoDB", $(Get-MongoDbVersion))
 }
+Write-Host "sqlite"
 $databasesTools.AddToolVersion("sqlite3", $(Get-SqliteVersion))
 $databasesTools.AddNode($(Build-PostgreSqlSection))
 $databasesTools.AddNode($(Build-MySQLSection))

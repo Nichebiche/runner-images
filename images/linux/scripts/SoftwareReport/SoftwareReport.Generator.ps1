@@ -156,18 +156,31 @@ $tools.AddToolVersion("zstd", $(Get-ZstdVersion))
 # CLI Tools
 Write-Host "cli-tools"
 $cliTools = $installedSoftware.AddHeader("CLI Tools")
+Write-Host "alibaba cli"
 $cliTools.AddToolVersion("Alibaba Cloud CLI", $(Get-AlibabaCloudCliVersion))
+Write-Host "aws cli"
 $cliTools.AddToolVersion("AWS CLI", $(Get-AWSCliVersion))
+Write-Host "aws-cli pm"
 $cliTools.AddToolVersion("AWS CLI Session Manager Plugin", $(Get-AWSCliSessionManagerPluginVersion))
+Write-Host "aws-cli sam"
 $cliTools.AddToolVersion("AWS SAM CLI", $(Get-AWSSAMVersion))
+Write-Host "azure-cli"
 $cliTools.AddToolVersion("Azure CLI", $(Get-AzureCliVersion))
+Write-Host "azure devops"
 $cliTools.AddToolVersion("Azure CLI (azure-devops)", $(Get-AzureDevopsVersion))
+Write-Host "github-cli"
 $cliTools.AddToolVersion("GitHub CLI", $(Get-GitHubCliVersion))
+Write-Host "gcloud sdk"
 $cliTools.AddToolVersion("Google Cloud SDK", $(Get-GoogleCloudSDKVersion))
+Write-Host "Hub cli"
 $cliTools.AddToolVersion("Hub CLI", $(Get-HubCliVersion))
+Write-Host "Netfly cli"
 $cliTools.AddToolVersion("Netlify CLI", $(Get-NetlifyCliVersion))
+Write-Host "Openshift cli"
 $cliTools.AddToolVersion("OpenShift CLI", $(Get-OCCliVersion))
+Write-Host "oras cli"
 $cliTools.AddToolVersion("ORAS CLI", $(Get-ORASCliVersion))
+Write-Host "vercel cli"
 $cliTools.AddToolVersion("Vercel CLI", $(Get-VerselCliversion))
 
 
@@ -177,43 +190,70 @@ if ((Test-IsUbuntu20) -or (Test-IsUbuntu22)) {
 }
 
 $phpTools = $installedSoftware.AddHeader("PHP Tools")
+Write-Host "php"
 $phpTools.AddToolVersionsListInline("PHP", $(Get-PHPVersions), "^\d+\.\d+")
+Write-Host "composer"
 $phpTools.AddToolVersion("Composer", $(Get-ComposerVersion))
+Write-Host "phpunit"
 $phpTools.AddToolVersion("PHPUnit", $(Get-PHPUnitVersion))
+Write-Host "phpunit2"
 $phpTools.AddNote("Both Xdebug and PCOV extensions are installed, but only Xdebug is enabled.")
-
 $haskellTools = $installedSoftware.AddHeader("Haskell Tools")
+Write-Host "cabal"
 $haskellTools.AddToolVersion("Cabal", $(Get-CabalVersion))
+Write-Host "ghc"
 $haskellTools.AddToolVersion("GHC", $(Get-GHCVersion))
+Write-Host "ghcup"
 $haskellTools.AddToolVersion("GHCup", $(Get-GHCupVersion))
+Write-Host "stack"
 $haskellTools.AddToolVersion("Stack", $(Get-StackVersion))
 
 Initialize-RustEnvironment
 $rustTools = $installedSoftware.AddHeader("Rust Tools")
+Write-Host "cargo"
 $rustTools.AddToolVersion("Cargo", $(Get-CargoVersion))
+Write-Host "rust"
 $rustTools.AddToolVersion("Rust", $(Get-RustVersion))
+Write-Host "rustdoc"
 $rustTools.AddToolVersion("Rustdoc", $(Get-RustdocVersion))
+Write-Host "rustup"
 $rustTools.AddToolVersion("Rustup", $(Get-RustupVersion))
 $rustToolsPackages = $rustTools.AddHeader("Packages")
+Write-Host "bindgen"
 $rustToolsPackages.AddToolVersion("Bindgen", $(Get-BindgenVersion))
+Write-Host "cargo audit"
 $rustToolsPackages.AddToolVersion("Cargo audit", $(Get-CargoAuditVersion))
+Write-Host "clippy"
 $rustToolsPackages.AddToolVersion("Cargo clippy", $(Get-CargoClippyVersion))
+Write-Host "outdated"
 $rustToolsPackages.AddToolVersion("Cargo outdated", $(Get-CargoOutdatedVersion))
+Write-Host "cbindgen"
 $rustToolsPackages.AddToolVersion("Cbindgen", $(Get-CbindgenVersion))
+Write-Host "rustfmt"
 $rustToolsPackages.AddToolVersion("Rustfmt", $(Get-RustfmtVersion))
 
 $browsersTools = $installedSoftware.AddHeader("Browsers and Drivers")
+Write-Host "chrome"
 $browsersTools.AddToolVersion("Google Chrome", $(Get-ChromeVersion))
+Write-Host "chrome driver"
 $browsersTools.AddToolVersion("ChromeDriver", $(Get-ChromeDriverVersion))
+Write-Host "chromium"
 $browsersTools.AddToolVersion("Chromium", $(Get-ChromiumVersion))
+Write-Host "edge"
 $browsersTools.AddToolVersion("Microsoft Edge", $(Get-EdgeVersion))
+Write-Host "edge driver"
 $browsersTools.AddToolVersion("Microsoft Edge WebDriver", $(Get-EdgeDriverVersion))
+Write-Host "selenium"
 $browsersTools.AddToolVersion("Selenium server", $(Get-SeleniumVersion))
+Write-Host "firefox"
 $browsersTools.AddToolVersion("Mozilla Firefox", $(Get-FirefoxVersion))
+Write-Host "firefox driver"
 $browsersTools.AddToolVersion("Geckodriver", $(Get-GeckodriverVersion))
+Write-Host "variables"
 $browsersTools.AddHeader("Environment variables").AddTable($(Build-BrowserWebdriversEnvironmentTable))
 
 $netCoreTools = $installedSoftware.AddHeader(".NET Tools")
+Write-Host "bet core sdks!!111"
 $netCoreTools.AddToolVersionsListInline(".NET Core SDK", $(Get-DotNetCoreSdkVersions), "^\d+\.\d+\.\d")
 $netCoreTools.AddNodes($(Get-DotnetTools))
 

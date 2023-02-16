@@ -34,6 +34,7 @@ $softwareReport.Root.AddToolVersion("Image Version:", $env:IMAGE_VERSION)
 $installedSoftware = $softwareReport.Root.AddHeader("Installed Software")
 
 # Language and Runtime
+Write-Host "language runtime"
 $languageAndRuntime = $installedSoftware.AddHeader("Language and Runtime")
 $languageAndRuntime.AddToolVersion("Bash", $(Get-BashVersion))
 $languageAndRuntime.AddToolVersionsListInline("Clang", $(Get-ClangToolVersions -ToolName "clang"), "^\d+")
@@ -58,6 +59,7 @@ $languageAndRuntime.AddToolVersion("Ruby", $(Get-RubyVersion))
 $languageAndRuntime.AddToolVersion("Swift", $(Get-SwiftVersion))
 
 # Package Management
+Write-Host "package managers"
 $packageManagement = $installedSoftware.AddHeader("Package Management")
 $packageManagement.AddToolVersion("cpan", $(Get-CpanVersion))
 $packageManagement.AddToolVersion("Helm", $(Get-HelmVersion))
@@ -80,6 +82,7 @@ to accomplish this.
 '@)
 
 # Project Management
+Write-Host "project management"
 $projectManagement = $installedSoftware.AddHeader("Project Management")
 if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
     $projectManagement.AddToolVersion("Ant", $(Get-AntVersion))
@@ -94,6 +97,7 @@ if ((Test-IsUbuntu18) -or (Test-IsUbuntu20)) {
 }
 
 # Tools
+Write-Host "tools"
 $tools = $installedSoftware.AddHeader("Tools")
 $tools.AddToolVersion("Ansible", $(Get-AnsibleVersion))
 $tools.AddToolVersion("apt-fast", $(Get-AptFastVersion))
@@ -150,6 +154,7 @@ $tools.AddToolVersion("yq", $(Get-YqVersion))
 $tools.AddToolVersion("zstd", $(Get-ZstdVersion))
 
 # CLI Tools
+Write-Host "cli-tools"
 $cliTools = $installedSoftware.AddHeader("CLI Tools")
 $cliTools.AddToolVersion("Alibaba Cloud CLI", $(Get-AlibabaCloudCliVersion))
 $cliTools.AddToolVersion("AWS CLI", $(Get-AWSCliVersion))

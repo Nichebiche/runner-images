@@ -220,7 +220,7 @@ class ToolVersionsListNode: BaseToolNode {
     [String] ExtractMajorVersion([String] $Version) {
         $match = $this.MajorVersionRegex.Match($Version)
         if (($match.Success -ne $true) -or [String]::IsNullOrEmpty($match.Groups[0].Value)) {
-            throw "Version '$Version' doesn't match regex '$($this.PrimaryVersionRegex)'"
+            throw "Version '$Version' doesn't match regex '$($this.MajorVersionRegex)' for tool '$($this.ToolName)'"
         }
 
         return $match.Groups[0].Value

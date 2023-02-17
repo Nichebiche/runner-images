@@ -33,7 +33,7 @@ $softwareReport.Root.AddToolVersion("Image Version:", $env:IMAGE_VERSION)
 
 $installedSoftware = $softwareReport.Root.AddHeader("Installed Software")
 
-Write-Host "Php DEBUG"
+Write-Host "Php function DEBUG"
 function Get-PHPVersions {
     $result = Get-CommandResult "apt list --installed" -Multiline
     return $result.Output | Where-Object { $_ -match "^php\d+\.\d+/"} | ForEach-Object {
@@ -43,6 +43,11 @@ function Get-PHPVersions {
 }
 
 Get-PHPVersions
+
+Write-Host "check installed versions"
+$result = Get-CommandResult "apt list --installed" -Multiline
+$result.Output | Where-Object { $_ -match "^php\d+\.\d+/"}
+
 
 # Language and Runtime
 $languageAndRuntime = $installedSoftware.AddHeader("Language and Runtime")

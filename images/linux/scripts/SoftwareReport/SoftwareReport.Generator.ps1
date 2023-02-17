@@ -42,11 +42,14 @@ function Get-PHPVersions {
     }
 }
 
-Get-PHPVersions
 
 Write-Host "check installed versions"
 $result = Get-CommandResult "apt list --installed" -Multiline
 $result.Output | Where-Object { $_ -match "^php\d+\.\d+/"}
+
+Write-Host "call function"
+Get-PHPVersions
+
 
 
 # Language and Runtime

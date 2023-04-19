@@ -1,4 +1,3 @@
-
 variable "allowed_inbound_ip_addresses" {
   type    = list(string)
   default = []
@@ -181,6 +180,7 @@ source "azure-arm" "build_vhd" {
 
 build {
   sources = ["source.azure-arm.build_vhd"]
+}
 
   provisioner "shell" {
     execute_command = "sudo sh -c '{{ .Vars }} {{ .Path }}'"
@@ -228,21 +228,14 @@ build {
     scripts           = ["${path.root}/scripts/base/reboot.sh"]
   }
 
-  provisioner "file" {
-    destination = "${path.root}/Ubuntu2204-Readme.md"
-    direction   = "download"
-    source      = "${var.image_folder}/software-report.md"
-  }
-
-  provisioner "file" {
-    destination = "${path.root}/software-report.json"
-    direction   = "download"
-    source      = "${var.image_folder}/software-report.json"
+  provisioner "shell" {
+    execute_command     = "sudo sh -c '{{ .Vars }} {{ .Path }}'"
+    pause_before        = "1m0s"
+    scripts             = ["${path.root}/scripts/installers/cleanup.sh"]
+    start_retry_timeout = "10m"
   }
 
   provisioner "shell" {
     execute_command = "sudo sh -c '{{ .Vars }} {{ .Path }}'"
     inline          = ["sleep 30", "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"]
   }
-
-}

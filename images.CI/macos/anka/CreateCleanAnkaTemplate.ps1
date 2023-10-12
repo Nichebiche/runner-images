@@ -27,7 +27,7 @@ param(
     [int] $RamSizeGb = 7,
     [int] $DiskSizeGb = 300,
     [string] $DisplayResolution = "1920x1080",
-    [string] $TagName = [DateTimeOffset]::Now.ToUnixTimeSeconds()
+    [string] $TagName = [DateTimeOffset]::Now.ToUnixTimeSeconds(),
     [string] $Uuid = "4203018E-580F-C1B5-9525-B745CECA79EB"
 )
 
